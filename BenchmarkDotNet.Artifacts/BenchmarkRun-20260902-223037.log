@@ -1,0 +1,678 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 9 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/" /p:OutDir="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" /p:OutputPath="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" /p:PublishDir="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/publish/" in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1
+// command took 0.58 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/" /p:OutDir="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" /p:OutputPath="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" /p:PublishDir="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/publish/" --output "/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1
+// command took 2.6 sec and exited with 0
+// ***** Done, took 00:00:03 (3.21 sec)   *****
+// Found 5 benchmarks:
+//   ReadBenchmarks.ParquetNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   ReadBenchmarks.ParquetSharp_Column_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   ReadBenchmarks.ParquetSharp_Arrow_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   ReadBenchmarks.DuckDb_AdoNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   ReadBenchmarks.DuckDb_Dapper_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+
+// **************************
+// Benchmark: ReadBenchmarks.ParquetNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.ParquetNet_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 0 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Unable to load shared library 'duckdb' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: 
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file)
+dlopen(duckdb.dylib, 0x0001): tried: 'duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb.dylib' (no such file), '/usr/lib/duckdb.dylib' (no such file, not in dyld cache), 'duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file)
+dlopen(libduckdb.dylib, 0x0001): tried: 'libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb.dylib' (no such file), '/usr/lib/libduckdb.dylib' (no such file, not in dyld cache), 'libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file)
+dlopen(duckdb, 0x0001): tried: 'duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb' (no such file), '/usr/lib/duckdb' (no such file, not in dyld cache), 'duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file)
+dlopen(libduckdb, 0x0001): tried: 'libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb' (no such file), '/usr/lib/libduckdb' (no such file, not in dyld cache), 'libduckdb' (no such file)
+
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder..cctor()
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder.Parse(String connectionString)
+   at DuckDB.NET.Data.DuckDBConnection.get_ParsedConnection()
+   at DuckDB.NET.Data.DuckDBConnection.Open()
+   at ParquetBenchmarks.Benchmarks.ReadBenchmarks.Setup() in /Users/stephen/Downloads/ParquetBenchmarks 2/Benchmarks/ReadBenchmarks.cs:line 46
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_0.<.ctor>b__3_0() in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 193
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_0.Run(IHost host, String benchmarkName) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 177
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 95521 has exited with code 255.
+
+// ** Remained 8 (88,9 %) benchmark(s) to run. Estimated finish 2026-09-02 22:31 (0h 0m from now) **
+// **************************
+// Benchmark: ReadBenchmarks.ParquetSharp_Column_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.ParquetSharp_Column_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 1 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Unable to load shared library 'duckdb' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: 
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file)
+dlopen(duckdb.dylib, 0x0001): tried: 'duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb.dylib' (no such file), '/usr/lib/duckdb.dylib' (no such file, not in dyld cache), 'duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file)
+dlopen(libduckdb.dylib, 0x0001): tried: 'libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb.dylib' (no such file), '/usr/lib/libduckdb.dylib' (no such file, not in dyld cache), 'libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file)
+dlopen(duckdb, 0x0001): tried: 'duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb' (no such file), '/usr/lib/duckdb' (no such file, not in dyld cache), 'duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file)
+dlopen(libduckdb, 0x0001): tried: 'libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb' (no such file), '/usr/lib/libduckdb' (no such file, not in dyld cache), 'libduckdb' (no such file)
+
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder..cctor()
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder.Parse(String connectionString)
+   at DuckDB.NET.Data.DuckDBConnection.get_ParsedConnection()
+   at DuckDB.NET.Data.DuckDBConnection.Open()
+   at ParquetBenchmarks.Benchmarks.ReadBenchmarks.Setup() in /Users/stephen/Downloads/ParquetBenchmarks 2/Benchmarks/ReadBenchmarks.cs:line 46
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_1.<.ctor>b__3_0() in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 391
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_1.Run(IHost host, String benchmarkName) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 375
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 95522 has exited with code 255.
+
+// ** Remained 7 (77,8 %) benchmark(s) to run. Estimated finish 2026-09-02 22:31 (0h 0m from now) **
+// **************************
+// Benchmark: ReadBenchmarks.ParquetSharp_Arrow_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.ParquetSharp_Arrow_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 2 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Unable to load shared library 'duckdb' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: 
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file)
+dlopen(duckdb.dylib, 0x0001): tried: 'duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb.dylib' (no such file), '/usr/lib/duckdb.dylib' (no such file, not in dyld cache), 'duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file)
+dlopen(libduckdb.dylib, 0x0001): tried: 'libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb.dylib' (no such file), '/usr/lib/libduckdb.dylib' (no such file, not in dyld cache), 'libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file)
+dlopen(duckdb, 0x0001): tried: 'duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb' (no such file), '/usr/lib/duckdb' (no such file, not in dyld cache), 'duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file)
+dlopen(libduckdb, 0x0001): tried: 'libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb' (no such file), '/usr/lib/libduckdb' (no such file, not in dyld cache), 'libduckdb' (no such file)
+
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder..cctor()
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder.Parse(String connectionString)
+   at DuckDB.NET.Data.DuckDBConnection.get_ParsedConnection()
+   at DuckDB.NET.Data.DuckDBConnection.Open()
+   at ParquetBenchmarks.Benchmarks.ReadBenchmarks.Setup() in /Users/stephen/Downloads/ParquetBenchmarks 2/Benchmarks/ReadBenchmarks.cs:line 46
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_2.<.ctor>b__3_0() in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 589
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_2.Run(IHost host, String benchmarkName) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 573
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 95523 has exited with code 255.
+
+// ** Remained 6 (66,7 %) benchmark(s) to run. Estimated finish 2026-09-02 22:31 (0h 0m from now) **
+// **************************
+// Benchmark: ReadBenchmarks.DuckDb_AdoNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.DuckDb_AdoNet_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 3 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Unable to load shared library 'duckdb' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: 
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file)
+dlopen(duckdb.dylib, 0x0001): tried: 'duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb.dylib' (no such file), '/usr/lib/duckdb.dylib' (no such file, not in dyld cache), 'duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file)
+dlopen(libduckdb.dylib, 0x0001): tried: 'libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb.dylib' (no such file), '/usr/lib/libduckdb.dylib' (no such file, not in dyld cache), 'libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file)
+dlopen(duckdb, 0x0001): tried: 'duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb' (no such file), '/usr/lib/duckdb' (no such file, not in dyld cache), 'duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file)
+dlopen(libduckdb, 0x0001): tried: 'libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb' (no such file), '/usr/lib/libduckdb' (no such file, not in dyld cache), 'libduckdb' (no such file)
+
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder..cctor()
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder.Parse(String connectionString)
+   at DuckDB.NET.Data.DuckDBConnection.get_ParsedConnection()
+   at DuckDB.NET.Data.DuckDBConnection.Open()
+   at ParquetBenchmarks.Benchmarks.ReadBenchmarks.Setup() in /Users/stephen/Downloads/ParquetBenchmarks 2/Benchmarks/ReadBenchmarks.cs:line 46
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_3.<.ctor>b__3_0() in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 787
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_3.Run(IHost host, String benchmarkName) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 771
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 95524 has exited with code 255.
+
+// ** Remained 5 (55,6 %) benchmark(s) to run. Estimated finish 2026-09-02 22:31 (0h 0m from now) **
+// **************************
+// Benchmark: ReadBenchmarks.DuckDb_Dapper_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.DuckDb_Dapper_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 4 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Unable to load shared library 'duckdb' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: 
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file)
+dlopen(duckdb.dylib, 0x0001): tried: 'duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb.dylib' (no such file), '/usr/lib/duckdb.dylib' (no such file, not in dyld cache), 'duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file)
+dlopen(libduckdb.dylib, 0x0001): tried: 'libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb.dylib' (no such file), '/usr/lib/libduckdb.dylib' (no such file, not in dyld cache), 'libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file)
+dlopen(duckdb, 0x0001): tried: 'duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb' (no such file), '/usr/lib/duckdb' (no such file, not in dyld cache), 'duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file)
+dlopen(libduckdb, 0x0001): tried: 'libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb' (no such file), '/usr/lib/libduckdb' (no such file, not in dyld cache), 'libduckdb' (no such file)
+
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder..cctor()
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder.Parse(String connectionString)
+   at DuckDB.NET.Data.DuckDBConnection.get_ParsedConnection()
+   at DuckDB.NET.Data.DuckDBConnection.Open()
+   at ParquetBenchmarks.Benchmarks.ReadBenchmarks.Setup() in /Users/stephen/Downloads/ParquetBenchmarks 2/Benchmarks/ReadBenchmarks.cs:line 46
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_4.<.ctor>b__3_0() in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 985
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_4.Run(IHost host, String benchmarkName) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 969
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 95525 has exited with code 255.
+
+// ** Remained 4 (44,4 %) benchmark(s) to run. Estimated finish 2026-09-02 22:31 (0h 0m from now) **
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.ReadBenchmarks-report.csv
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.ReadBenchmarks-report-github.md
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.ReadBenchmarks-report.html
+
+// * Detailed results *
+ReadBenchmarks.ParquetNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+There are not any results runs
+
+ReadBenchmarks.ParquetSharp_Column_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+There are not any results runs
+
+ReadBenchmarks.ParquetSharp_Arrow_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+There are not any results runs
+
+ReadBenchmarks.DuckDb_AdoNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+There are not any results runs
+
+ReadBenchmarks.DuckDb_Dapper_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+There are not any results runs
+
+// * Summary *
+
+BenchmarkDotNet v0.15.8, macOS Tahoe 26.6.2 (25G83) [Darwin 25.6.0]
+Apple M4, 1 CPU, 10 logical and 10 physical cores
+.NET SDK 10.0.201
+  [Host]     : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+  Job-OIFEUM : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+
+Runtime=.NET 10.0  IterationCount=5  WarmupCount=2  
+
+| Method                         | Mean | Error | Ratio | RatioSD | Alloc Ratio |
+|------------------------------- |-----:|------:|------:|--------:|------------:|
+| ParquetNet_ReadDecode          |   NA |    NA |     ? |       ? |           ? |
+| ParquetSharp_Column_ReadDecode |   NA |    NA |     ? |       ? |           ? |
+| ParquetSharp_Arrow_ReadDecode  |   NA |    NA |     ? |       ? |           ? |
+| DuckDb_AdoNet_ReadDecode       |   NA |    NA |     ? |       ? |           ? |
+| DuckDb_Dapper_ReadDecode       |   NA |    NA |     ? |       ? |           ? |
+
+Benchmarks with issues:
+  ReadBenchmarks.ParquetNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+  ReadBenchmarks.ParquetSharp_Column_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+  ReadBenchmarks.ParquetSharp_Arrow_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+  ReadBenchmarks.DuckDb_AdoNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+  ReadBenchmarks.DuckDb_Dapper_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+
+// * Warnings *
+BaselineCustomAnalyzer
+  Summary -> A question mark '?' symbol indicates that it was not possible to compute the (Ratio, RatioSD, Alloc Ratio) column(s) because the baseline or benchmark could not be found, or the baseline value is too close to zero.
+
+// * Legends *
+  Mean        : Arithmetic mean of all measurements
+  Error       : Half of 99.9% confidence interval
+  Ratio       : Mean of the ratio distribution ([Current]/[Baseline])
+  RatioSD     : Standard deviation of the ratio distribution ([Current]/[Baseline])
+  Alloc Ratio : Allocated memory ratio distribution ([Current]/[Baseline])
+  1 ns        : 1 Nanosecond (0.000000001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:00:26 (26.58 sec), executed benchmarks: 5
+
+// Found 4 benchmarks:
+//   WriteBenchmarks.ParquetNet_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   WriteBenchmarks.ParquetSharp_Column_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   WriteBenchmarks.ParquetSharp_Arrow_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   WriteBenchmarks.DuckDb_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+
+// **************************
+// Benchmark: WriteBenchmarks.ParquetNet_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 142 143 --benchmarkName ParquetBenchmarks.Benchmarks.WriteBenchmarks.ParquetNet_Write --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 5 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 69125.00 ns, 69.1250 us/op
+WorkloadJitting  1: 1 op, 1680901833.00 ns, 1.6809 s/op
+
+OverheadJitting  2: 1 op, 1167.00 ns, 1.1670 us/op
+WorkloadJitting  2: 1 op, 1189954958.00 ns, 1.1900 s/op
+
+WorkloadWarmup   1: 1 op, 1159063042.00 ns, 1.1591 s/op
+WorkloadWarmup   2: 1 op, 1153470291.00 ns, 1.1535 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 1221266458.00 ns, 1.2213 s/op
+WorkloadActual   2: 1 op, 1150971625.00 ns, 1.1510 s/op
+WorkloadActual   3: 1 op, 1179336334.00 ns, 1.1793 s/op
+WorkloadActual   4: 1 op, 1160507417.00 ns, 1.1605 s/op
+WorkloadActual   5: 1 op, 1166525666.00 ns, 1.1665 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 1150971625.00 ns, 1.1510 s/op
+WorkloadResult   2: 1 op, 1179336334.00 ns, 1.1793 s/op
+WorkloadResult   3: 1 op, 1160507417.00 ns, 1.1605 s/op
+WorkloadResult   4: 1 op, 1166525666.00 ns, 1.1665 s/op
+// GC:  22 0 0 1208068816 1
+// Threading:  21 0 1
+
+// AfterAll
+// Benchmark Process 95531 has exited with code 0.
+
+Mean = 1.164 s, StdErr = 0.006 s (0.51%), N = 4, StdDev = 0.012 s
+Min = 1.151 s, Q1 = 1.158 s, Median = 1.164 s, Q3 = 1.170 s, Max = 1.179 s
+IQR = 0.012 s, LowerFence = 1.141 s, UpperFence = 1.187 s
+ConfidenceInterval = [1.088 s; 1.241 s] (CI 99.9%), Margin = 0.077 s (6.59% of Mean)
+Skewness = 0.14, Kurtosis = 1.04, MValue = 2
+
+// ** Remained 3 (33,3 %) benchmark(s) to run. Estimated finish 2026-09-02 22:31 (0h 0m from now) **
+// **************************
+// Benchmark: WriteBenchmarks.ParquetSharp_Column_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 142 143 --benchmarkName ParquetBenchmarks.Benchmarks.WriteBenchmarks.ParquetSharp_Column_Write --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 6 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 67375.00 ns, 67.3750 us/op
+WorkloadJitting  1: 1 op, 938129958.00 ns, 938.1300 ms/op
+
+OverheadJitting  2: 1 op, 1042.00 ns, 1.0420 us/op
+WorkloadJitting  2: 1 op, 832151833.00 ns, 832.1518 ms/op
+
+WorkloadWarmup   1: 1 op, 870392333.00 ns, 870.3923 ms/op
+WorkloadWarmup   2: 1 op, 911880500.00 ns, 911.8805 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 879207083.00 ns, 879.2071 ms/op
+WorkloadActual   2: 1 op, 835359375.00 ns, 835.3594 ms/op
+WorkloadActual   3: 1 op, 901339209.00 ns, 901.3392 ms/op
+WorkloadActual   4: 1 op, 834946166.00 ns, 834.9462 ms/op
+WorkloadActual   5: 1 op, 882666750.00 ns, 882.6668 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 879207083.00 ns, 879.2071 ms/op
+WorkloadResult   2: 1 op, 835359375.00 ns, 835.3594 ms/op
+WorkloadResult   3: 1 op, 901339209.00 ns, 901.3392 ms/op
+WorkloadResult   4: 1 op, 834946166.00 ns, 834.9462 ms/op
+WorkloadResult   5: 1 op, 882666750.00 ns, 882.6668 ms/op
+// GC:  19 1 0 567015600 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 95538 has exited with code 0.
+
+Mean = 866.704 ms, StdErr = 13.420 ms (1.55%), N = 5, StdDev = 30.007 ms
+Min = 834.946 ms, Q1 = 835.359 ms, Median = 879.207 ms, Q3 = 882.667 ms, Max = 901.339 ms
+IQR = 47.307 ms, LowerFence = 764.398 ms, UpperFence = 953.628 ms
+ConfidenceInterval = [751.156 ms; 982.252 ms] (CI 99.9%), Margin = 115.548 ms (13.33% of Mean)
+Skewness = -0.11, Kurtosis = 0.87, MValue = 2
+
+// ** Remained 2 (22,2 %) benchmark(s) to run. Estimated finish 2026-09-02 22:32 (0h 0m from now) **
+// **************************
+// Benchmark: WriteBenchmarks.ParquetSharp_Arrow_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 142 143 --benchmarkName ParquetBenchmarks.Benchmarks.WriteBenchmarks.ParquetSharp_Arrow_Write --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 7 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 60250.00 ns, 60.2500 us/op
+WorkloadJitting  1: 1 op, 763697875.00 ns, 763.6979 ms/op
+
+OverheadJitting  2: 1 op, 1250.00 ns, 1.2500 us/op
+WorkloadJitting  2: 1 op, 541990958.00 ns, 541.9910 ms/op
+
+WorkloadWarmup   1: 1 op, 561791458.00 ns, 561.7915 ms/op
+WorkloadWarmup   2: 1 op, 570671208.00 ns, 570.6712 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 569997125.00 ns, 569.9971 ms/op
+WorkloadActual   2: 1 op, 549315625.00 ns, 549.3156 ms/op
+WorkloadActual   3: 1 op, 538334833.00 ns, 538.3348 ms/op
+WorkloadActual   4: 1 op, 572473625.00 ns, 572.4736 ms/op
+WorkloadActual   5: 1 op, 578058625.00 ns, 578.0586 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 569997125.00 ns, 569.9971 ms/op
+WorkloadResult   2: 1 op, 549315625.00 ns, 549.3156 ms/op
+WorkloadResult   3: 1 op, 538334833.00 ns, 538.3348 ms/op
+WorkloadResult   4: 1 op, 572473625.00 ns, 572.4736 ms/op
+WorkloadResult   5: 1 op, 578058625.00 ns, 578.0586 ms/op
+// GC:  1 1 1 1053579960 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 95540 has exited with code 0.
+
+Mean = 561.636 ms, StdErr = 7.589 ms (1.35%), N = 5, StdDev = 16.969 ms
+Min = 538.335 ms, Q1 = 549.316 ms, Median = 569.997 ms, Q3 = 572.474 ms, Max = 578.059 ms
+IQR = 23.158 ms, LowerFence = 514.579 ms, UpperFence = 607.211 ms
+ConfidenceInterval = [496.294 ms; 626.978 ms] (CI 99.9%), Margin = 65.342 ms (11.63% of Mean)
+Skewness = -0.34, Kurtosis = 0.99, MValue = 2
+
+// ** Remained 1 (11,1 %) benchmark(s) to run. Estimated finish 2026-09-02 22:32 (0h 0m from now) **
+// **************************
+// Benchmark: WriteBenchmarks.DuckDb_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 142 143 --benchmarkName ParquetBenchmarks.Benchmarks.WriteBenchmarks.DuckDb_Write --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 8 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 80125.00 ns, 80.1250 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Unable to load shared library 'duckdb' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: 
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb.dylib' (no such file)
+dlopen(duckdb.dylib, 0x0001): tried: 'duckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb.dylib' (no such file), '/usr/lib/duckdb.dylib' (no such file, not in dyld cache), 'duckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb.dylib' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb.dylib' (no such file)
+dlopen(libduckdb.dylib, 0x0001): tried: 'libduckdb.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb.dylib' (no such file), '/usr/lib/libduckdb.dylib' (no such file, not in dyld cache), 'libduckdb.dylib' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/duckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/duckdb' (no such file)
+dlopen(duckdb, 0x0001): tried: 'duckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSduckdb' (no such file), '/usr/lib/duckdb' (no such file, not in dyld cache), 'duckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/runtimes/osx-arm64/native/libduckdb' (no such file)
+dlopen(/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb, 0x0001): tried: '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file), '/usr/local/share/dotnet/shared/Microsoft.NETCore.App/10.0.5/libduckdb' (no such file)
+dlopen(/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb, 0x0001): tried: '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file), '/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/libduckdb' (no such file)
+dlopen(libduckdb, 0x0001): tried: 'libduckdb' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibduckdb' (no such file), '/usr/lib/libduckdb' (no such file, not in dyld cache), 'libduckdb' (no such file)
+
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder..cctor()
+   at DuckDB.NET.Data.DuckDBConnectionStringBuilder.Parse(String connectionString)
+   at DuckDB.NET.Data.DuckDBConnection.get_ParsedConnection()
+   at DuckDB.NET.Data.DuckDBConnection.Open()
+   at ParquetBenchmarks.Benchmarks.WriteBenchmarks.DuckDb_Write() in /Users/stephen/Downloads/ParquetBenchmarks 2/Benchmarks/WriteBenchmarks.cs:line 63
+   at BenchmarkDotNet.Autogenerated.Runnable_8.WorkloadActionNoUnroll(Int64 invokeCount) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 1881
+   at BenchmarkDotNet.Engines.Engine.Measure(Action`1 action, Int64 invokeCount)
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_8.Run(IHost host, String benchmarkName) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 1746
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/ParquetBenchmarks-Job-OIFEUM-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 95541 has exited with code 255.
+
+// ** Remained 0 (0,0 %) benchmark(s) to run. Estimated finish 2026-09-02 22:32 (0h 0m from now) **
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.WriteBenchmarks-report.csv
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.WriteBenchmarks-report-github.md
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.WriteBenchmarks-report.html
+
+// * Detailed results *
+WriteBenchmarks.ParquetNet_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 1.164 s, StdErr = 0.006 s (0.51%), N = 4, StdDev = 0.012 s
+Min = 1.151 s, Q1 = 1.158 s, Median = 1.164 s, Q3 = 1.170 s, Max = 1.179 s
+IQR = 0.012 s, LowerFence = 1.141 s, UpperFence = 1.187 s
+ConfidenceInterval = [1.088 s; 1.241 s] (CI 99.9%), Margin = 0.077 s (6.59% of Mean)
+Skewness = 0.14, Kurtosis = 1.04, MValue = 2
+-------------------- Histogram --------------------
+[1.147 s ; 1.189 s) | @@@@
+---------------------------------------------------
+
+WriteBenchmarks.ParquetSharp_Column_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 866.704 ms, StdErr = 13.420 ms (1.55%), N = 5, StdDev = 30.007 ms
+Min = 834.946 ms, Q1 = 835.359 ms, Median = 879.207 ms, Q3 = 882.667 ms, Max = 901.339 ms
+IQR = 47.307 ms, LowerFence = 764.398 ms, UpperFence = 953.628 ms
+ConfidenceInterval = [751.156 ms; 982.252 ms] (CI 99.9%), Margin = 115.548 ms (13.33% of Mean)
+Skewness = -0.11, Kurtosis = 0.87, MValue = 2
+-------------------- Histogram --------------------
+[811.914 ms ; 858.185 ms) | @@
+[858.185 ms ; 913.305 ms) | @@@
+---------------------------------------------------
+
+WriteBenchmarks.ParquetSharp_Arrow_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 561.636 ms, StdErr = 7.589 ms (1.35%), N = 5, StdDev = 16.969 ms
+Min = 538.335 ms, Q1 = 549.316 ms, Median = 569.997 ms, Q3 = 572.474 ms, Max = 578.059 ms
+IQR = 23.158 ms, LowerFence = 514.579 ms, UpperFence = 607.211 ms
+ConfidenceInterval = [496.294 ms; 626.978 ms] (CI 99.9%), Margin = 65.342 ms (11.63% of Mean)
+Skewness = -0.34, Kurtosis = 0.99, MValue = 2
+-------------------- Histogram --------------------
+[530.801 ms ; 561.003 ms) | @@
+[561.003 ms ; 591.083 ms) | @@@
+---------------------------------------------------
+
+WriteBenchmarks.DuckDb_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+There are not any results runs
+
+// * Summary *
+
+BenchmarkDotNet v0.15.8, macOS Tahoe 26.6.2 (25G83) [Darwin 25.6.0]
+Apple M4, 1 CPU, 10 logical and 10 physical cores
+.NET SDK 10.0.201
+  [Host]     : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+  Job-OIFEUM : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+
+Runtime=.NET 10.0  IterationCount=5  WarmupCount=2  
+
+| Method                    | Mean       | Error     | StdDev   | Ratio | RatioSD | Gen0       | Gen1      | Gen2      | Allocated  | Alloc Ratio |
+|-------------------------- |-----------:|----------:|---------:|------:|--------:|-----------:|----------:|----------:|-----------:|------------:|
+| ParquetNet_Write          | 1,164.3 ms |  76.74 ms | 11.88 ms |  1.00 |    0.01 | 22000.0000 |         - |         - |  1152.1 MB |        1.00 |
+| ParquetSharp_Column_Write |   866.7 ms | 115.55 ms | 30.01 ms |  0.74 |    0.02 | 19000.0000 | 1000.0000 |         - |  540.75 MB |        0.47 |
+| ParquetSharp_Arrow_Write  |   561.6 ms |  65.34 ms | 16.97 ms |  0.48 |    0.01 |  1000.0000 | 1000.0000 | 1000.0000 | 1004.77 MB |        0.87 |
+| DuckDb_Write              |         NA |        NA |       NA |     ? |       ? |         NA |        NA |        NA |         NA |           ? |
+
+Benchmarks with issues:
+  WriteBenchmarks.DuckDb_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+
+// * Warnings *
+BaselineCustomAnalyzer
+  Summary -> A question mark '?' symbol indicates that it was not possible to compute the (Ratio, RatioSD, Alloc Ratio) column(s) because the baseline or benchmark could not be found, or the baseline value is too close to zero.
+
+// * Hints *
+Outliers
+  WriteBenchmarks.ParquetNet_Write: Runtime=.NET 10.0, IterationCount=5, WarmupCount=2 -> 1 outlier  was  removed (1.22 s)
+
+// * Legends *
+  Mean        : Arithmetic mean of all measurements
+  Error       : Half of 99.9% confidence interval
+  StdDev      : Standard deviation of all measurements
+  Ratio       : Mean of the ratio distribution ([Current]/[Baseline])
+  RatioSD     : Standard deviation of the ratio distribution ([Current]/[Baseline])
+  Gen0        : GC Generation 0 collects per 1000 operations
+  Gen1        : GC Generation 1 collects per 1000 operations
+  Gen2        : GC Generation 2 collects per 1000 operations
+  Allocated   : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  Alloc Ratio : Allocated memory ratio distribution ([Current]/[Baseline])
+  1 ms        : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:00:56 (56.43 sec), executed benchmarks: 4
+
+Global total time: 00:01:26 (86.46 sec), executed benchmarks: 9
+// * Artifacts cleanup *
+Artifacts cleanup is finished

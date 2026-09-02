@@ -1,0 +1,673 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 9 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/" /p:OutDir="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" /p:OutputPath="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" /p:PublishDir="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/publish/" in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1
+// command took 0.57 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/" /p:OutDir="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" /p:OutputPath="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" /p:PublishDir="/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/publish/" --output "/Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0/" in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1
+// command took 2.57 sec and exited with 0
+// ***** Done, took 00:00:03 (3.17 sec)   *****
+// Found 5 benchmarks:
+//   ReadBenchmarks.ParquetNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   ReadBenchmarks.ParquetSharp_Column_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   ReadBenchmarks.ParquetSharp_Arrow_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   ReadBenchmarks.DuckDb_AdoNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   ReadBenchmarks.DuckDb_Dapper_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+
+// **************************
+// Benchmark: ReadBenchmarks.ParquetNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.ParquetNet_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 0 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 68958.00 ns, 68.9580 us/op
+WorkloadJitting  1: 1 op, 2028751292.00 ns, 2.0288 s/op
+
+OverheadJitting  2: 1 op, 667.00 ns, 667.0000 ns/op
+WorkloadJitting  2: 1 op, 1711685333.00 ns, 1.7117 s/op
+
+WorkloadWarmup   1: 1 op, 1742562291.00 ns, 1.7426 s/op
+WorkloadWarmup   2: 1 op, 1773820709.00 ns, 1.7738 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 1701927250.00 ns, 1.7019 s/op
+WorkloadActual   2: 1 op, 1777726916.00 ns, 1.7777 s/op
+WorkloadActual   3: 1 op, 1708633000.00 ns, 1.7086 s/op
+WorkloadActual   4: 1 op, 1738227584.00 ns, 1.7382 s/op
+WorkloadActual   5: 1 op, 1763395584.00 ns, 1.7634 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 1701927250.00 ns, 1.7019 s/op
+WorkloadResult   2: 1 op, 1777726916.00 ns, 1.7777 s/op
+WorkloadResult   3: 1 op, 1708633000.00 ns, 1.7086 s/op
+WorkloadResult   4: 1 op, 1738227584.00 ns, 1.7382 s/op
+WorkloadResult   5: 1 op, 1763395584.00 ns, 1.7634 s/op
+// GC:  254 133 6 2904185984 1
+// Threading:  4 0 1
+
+// AfterAll
+// Benchmark Process 95742 has exited with code 0.
+
+Mean = 1.738 s, StdErr = 0.015 s (0.85%), N = 5, StdDev = 0.033 s
+Min = 1.702 s, Q1 = 1.709 s, Median = 1.738 s, Q3 = 1.763 s, Max = 1.778 s
+IQR = 0.055 s, LowerFence = 1.626 s, UpperFence = 1.846 s
+ConfidenceInterval = [1.610 s; 1.866 s] (CI 99.9%), Margin = 0.128 s (7.34% of Mean)
+Skewness = 0.04, Kurtosis = 0.89, MValue = 2
+
+// ** Remained 8 (88,9 %) benchmark(s) to run. Estimated finish 2026-09-02 22:41 (0h 3m from now) **
+// **************************
+// Benchmark: ReadBenchmarks.ParquetSharp_Column_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.ParquetSharp_Column_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 1 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 74792.00 ns, 74.7920 us/op
+WorkloadJitting  1: 1 op, 1092718958.00 ns, 1.0927 s/op
+
+OverheadJitting  2: 1 op, 375.00 ns, 375.0000 ns/op
+WorkloadJitting  2: 1 op, 882996292.00 ns, 882.9963 ms/op
+
+WorkloadWarmup   1: 1 op, 885305125.00 ns, 885.3051 ms/op
+WorkloadWarmup   2: 1 op, 884074667.00 ns, 884.0747 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 877023042.00 ns, 877.0230 ms/op
+WorkloadActual   2: 1 op, 880812709.00 ns, 880.8127 ms/op
+WorkloadActual   3: 1 op, 887357125.00 ns, 887.3571 ms/op
+WorkloadActual   4: 1 op, 886532166.00 ns, 886.5322 ms/op
+WorkloadActual   5: 1 op, 890359500.00 ns, 890.3595 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 877023042.00 ns, 877.0230 ms/op
+WorkloadResult   2: 1 op, 880812709.00 ns, 880.8127 ms/op
+WorkloadResult   3: 1 op, 887357125.00 ns, 887.3571 ms/op
+WorkloadResult   4: 1 op, 886532166.00 ns, 886.5322 ms/op
+WorkloadResult   5: 1 op, 890359500.00 ns, 890.3595 ms/op
+// GC:  129 69 5 1138672776 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 95745 has exited with code 0.
+
+Mean = 884.417 ms, StdErr = 2.409 ms (0.27%), N = 5, StdDev = 5.387 ms
+Min = 877.023 ms, Q1 = 880.813 ms, Median = 886.532 ms, Q3 = 887.357 ms, Max = 890.360 ms
+IQR = 6.544 ms, LowerFence = 870.996 ms, UpperFence = 897.174 ms
+ConfidenceInterval = [863.672 ms; 905.162 ms] (CI 99.9%), Margin = 20.745 ms (2.35% of Mean)
+Skewness = -0.26, Kurtosis = 1.07, MValue = 2
+
+// ** Remained 7 (77,8 %) benchmark(s) to run. Estimated finish 2026-09-02 22:40 (0h 2m from now) **
+// **************************
+// Benchmark: ReadBenchmarks.ParquetSharp_Arrow_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.ParquetSharp_Arrow_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 2 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 93125.00 ns, 93.1250 us/op
+WorkloadJitting  1: 1 op, 905365417.00 ns, 905.3654 ms/op
+
+OverheadJitting  2: 1 op, 209.00 ns, 209.0000 ns/op
+WorkloadJitting  2: 1 op, 835811834.00 ns, 835.8118 ms/op
+
+WorkloadWarmup   1: 1 op, 832596708.00 ns, 832.5967 ms/op
+WorkloadWarmup   2: 1 op, 861928417.00 ns, 861.9284 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 858725250.00 ns, 858.7253 ms/op
+WorkloadActual   2: 1 op, 898907625.00 ns, 898.9076 ms/op
+WorkloadActual   3: 1 op, 903215167.00 ns, 903.2152 ms/op
+WorkloadActual   4: 1 op, 902241500.00 ns, 902.2415 ms/op
+WorkloadActual   5: 1 op, 886737833.00 ns, 886.7378 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 858725250.00 ns, 858.7253 ms/op
+WorkloadResult   2: 1 op, 898907625.00 ns, 898.9076 ms/op
+WorkloadResult   3: 1 op, 903215167.00 ns, 903.2152 ms/op
+WorkloadResult   4: 1 op, 902241500.00 ns, 902.2415 ms/op
+WorkloadResult   5: 1 op, 886737833.00 ns, 886.7378 ms/op
+// GC:  134 70 5 1088168888 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 95749 has exited with code 0.
+
+Mean = 889.965 ms, StdErr = 8.344 ms (0.94%), N = 5, StdDev = 18.659 ms
+Min = 858.725 ms, Q1 = 886.738 ms, Median = 898.908 ms, Q3 = 902.241 ms, Max = 903.215 ms
+IQR = 15.504 ms, LowerFence = 863.482 ms, UpperFence = 925.497 ms
+ConfidenceInterval = [818.118 ms; 961.813 ms] (CI 99.9%), Margin = 71.848 ms (8.07% of Mean)
+Skewness = -0.79, Kurtosis = 1.67, MValue = 2
+
+// ** Remained 6 (66,7 %) benchmark(s) to run. Estimated finish 2026-09-02 22:39 (0h 2m from now) **
+// **************************
+// Benchmark: ReadBenchmarks.DuckDb_AdoNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.DuckDb_AdoNet_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 3 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 81417.00 ns, 81.4170 us/op
+WorkloadJitting  1: 1 op, 913767042.00 ns, 913.7670 ms/op
+
+OverheadJitting  2: 1 op, 417.00 ns, 417.0000 ns/op
+WorkloadJitting  2: 1 op, 884371958.00 ns, 884.3720 ms/op
+
+WorkloadWarmup   1: 1 op, 878896375.00 ns, 878.8964 ms/op
+WorkloadWarmup   2: 1 op, 907900459.00 ns, 907.9005 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 953473833.00 ns, 953.4738 ms/op
+WorkloadActual   2: 1 op, 958335792.00 ns, 958.3358 ms/op
+WorkloadActual   3: 1 op, 967074000.00 ns, 967.0740 ms/op
+WorkloadActual   4: 1 op, 935724333.00 ns, 935.7243 ms/op
+WorkloadActual   5: 1 op, 948383459.00 ns, 948.3835 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 953473833.00 ns, 953.4738 ms/op
+WorkloadResult   2: 1 op, 958335792.00 ns, 958.3358 ms/op
+WorkloadResult   3: 1 op, 967074000.00 ns, 967.0740 ms/op
+WorkloadResult   4: 1 op, 935724333.00 ns, 935.7243 ms/op
+WorkloadResult   5: 1 op, 948383459.00 ns, 948.3835 ms/op
+// GC:  134 71 5 1088143384 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 95751 has exited with code 0.
+
+Mean = 952.598 ms, StdErr = 5.224 ms (0.55%), N = 5, StdDev = 11.680 ms
+Min = 935.724 ms, Q1 = 948.383 ms, Median = 953.474 ms, Q3 = 958.336 ms, Max = 967.074 ms
+IQR = 9.952 ms, LowerFence = 933.455 ms, UpperFence = 973.264 ms
+ConfidenceInterval = [907.621 ms; 997.575 ms] (CI 99.9%), Margin = 44.977 ms (4.72% of Mean)
+Skewness = -0.21, Kurtosis = 1.36, MValue = 2
+
+// ** Remained 5 (55,6 %) benchmark(s) to run. Estimated finish 2026-09-02 22:39 (0h 1m from now) **
+// **************************
+// Benchmark: ReadBenchmarks.DuckDb_Dapper_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 136 137 --benchmarkName ParquetBenchmarks.Benchmarks.ReadBenchmarks.DuckDb_Dapper_ReadDecode --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 4 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 86792.00 ns, 86.7920 us/op
+WorkloadJitting  1: 1 op, 1458746875.00 ns, 1.4587 s/op
+
+OverheadJitting  2: 1 op, 250.00 ns, 250.0000 ns/op
+WorkloadJitting  2: 1 op, 1224299167.00 ns, 1.2243 s/op
+
+WorkloadWarmup   1: 1 op, 1218432459.00 ns, 1.2184 s/op
+WorkloadWarmup   2: 1 op, 1151259292.00 ns, 1.1513 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 1160666125.00 ns, 1.1607 s/op
+WorkloadActual   2: 1 op, 1048120458.00 ns, 1.0481 s/op
+WorkloadActual   3: 1 op, 1060370917.00 ns, 1.0604 s/op
+WorkloadActual   4: 1 op, 1101242375.00 ns, 1.1012 s/op
+WorkloadActual   5: 1 op, 1137962083.00 ns, 1.1380 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 1160666125.00 ns, 1.1607 s/op
+WorkloadResult   2: 1 op, 1048120458.00 ns, 1.0481 s/op
+WorkloadResult   3: 1 op, 1060370917.00 ns, 1.0604 s/op
+WorkloadResult   4: 1 op, 1101242375.00 ns, 1.1012 s/op
+WorkloadResult   5: 1 op, 1137962083.00 ns, 1.1380 s/op
+// GC:  149 77 6 1216926928 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 95754 has exited with code 0.
+
+Mean = 1.102 s, StdErr = 0.022 s (1.96%), N = 5, StdDev = 0.048 s
+Min = 1.048 s, Q1 = 1.060 s, Median = 1.101 s, Q3 = 1.138 s, Max = 1.161 s
+IQR = 0.078 s, LowerFence = 0.944 s, UpperFence = 1.254 s
+ConfidenceInterval = [0.915 s; 1.288 s] (CI 99.9%), Margin = 0.186 s (16.92% of Mean)
+Skewness = 0.05, Kurtosis = 0.91, MValue = 2
+
+// ** Remained 4 (44,4 %) benchmark(s) to run. Estimated finish 2026-09-02 22:39 (0h 1m from now) **
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.ReadBenchmarks-report.csv
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.ReadBenchmarks-report-github.md
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.ReadBenchmarks-report.html
+
+// * Detailed results *
+ReadBenchmarks.ParquetNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 1.738 s, StdErr = 0.015 s (0.85%), N = 5, StdDev = 0.033 s
+Min = 1.702 s, Q1 = 1.709 s, Median = 1.738 s, Q3 = 1.763 s, Max = 1.778 s
+IQR = 0.055 s, LowerFence = 1.626 s, UpperFence = 1.846 s
+ConfidenceInterval = [1.610 s; 1.866 s] (CI 99.9%), Margin = 0.128 s (7.34% of Mean)
+Skewness = 0.04, Kurtosis = 0.89, MValue = 2
+-------------------- Histogram --------------------
+[1.695 s ; 1.745 s) | @@@
+[1.745 s ; 1.803 s) | @@
+---------------------------------------------------
+
+ReadBenchmarks.ParquetSharp_Column_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 884.417 ms, StdErr = 2.409 ms (0.27%), N = 5, StdDev = 5.387 ms
+Min = 877.023 ms, Q1 = 880.813 ms, Median = 886.532 ms, Q3 = 887.357 ms, Max = 890.360 ms
+IQR = 6.544 ms, LowerFence = 870.996 ms, UpperFence = 897.174 ms
+ConfidenceInterval = [863.672 ms; 905.162 ms] (CI 99.9%), Margin = 20.745 ms (2.35% of Mean)
+Skewness = -0.26, Kurtosis = 1.07, MValue = 2
+-------------------- Histogram --------------------
+[872.888 ms ; 894.495 ms) | @@@@@
+---------------------------------------------------
+
+ReadBenchmarks.ParquetSharp_Arrow_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 889.965 ms, StdErr = 8.344 ms (0.94%), N = 5, StdDev = 18.659 ms
+Min = 858.725 ms, Q1 = 886.738 ms, Median = 898.908 ms, Q3 = 902.241 ms, Max = 903.215 ms
+IQR = 15.504 ms, LowerFence = 863.482 ms, UpperFence = 925.497 ms
+ConfidenceInterval = [818.118 ms; 961.813 ms] (CI 99.9%), Margin = 71.848 ms (8.07% of Mean)
+Skewness = -0.79, Kurtosis = 1.67, MValue = 2
+-------------------- Histogram --------------------
+[844.404 ms ; 880.655 ms) | @
+[880.655 ms ; 909.298 ms) | @@@@
+---------------------------------------------------
+
+ReadBenchmarks.DuckDb_AdoNet_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 952.598 ms, StdErr = 5.224 ms (0.55%), N = 5, StdDev = 11.680 ms
+Min = 935.724 ms, Q1 = 948.383 ms, Median = 953.474 ms, Q3 = 958.336 ms, Max = 967.074 ms
+IQR = 9.952 ms, LowerFence = 933.455 ms, UpperFence = 973.264 ms
+ConfidenceInterval = [907.621 ms; 997.575 ms] (CI 99.9%), Margin = 44.977 ms (4.72% of Mean)
+Skewness = -0.21, Kurtosis = 1.36, MValue = 2
+-------------------- Histogram --------------------
+[926.759 ms ; 976.039 ms) | @@@@@
+---------------------------------------------------
+
+ReadBenchmarks.DuckDb_Dapper_ReadDecode: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 1.102 s, StdErr = 0.022 s (1.96%), N = 5, StdDev = 0.048 s
+Min = 1.048 s, Q1 = 1.060 s, Median = 1.101 s, Q3 = 1.138 s, Max = 1.161 s
+IQR = 0.078 s, LowerFence = 0.944 s, UpperFence = 1.254 s
+ConfidenceInterval = [0.915 s; 1.288 s] (CI 99.9%), Margin = 0.186 s (16.92% of Mean)
+Skewness = 0.05, Kurtosis = 0.91, MValue = 2
+-------------------- Histogram --------------------
+[1.038 s ; 1.112 s) | @@@
+[1.112 s ; 1.198 s) | @@
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.15.8, macOS Tahoe 26.6.2 (25G83) [Darwin 25.6.0]
+Apple M4, 1 CPU, 10 logical and 10 physical cores
+.NET SDK 10.0.201
+  [Host]     : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+  Job-OIFEUM : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+
+Runtime=.NET 10.0  IterationCount=5  WarmupCount=2  
+
+| Method                         | Mean       | Error     | StdDev   | Ratio | RatioSD | Gen0        | Gen1        | Gen2      | Allocated | Alloc Ratio |
+|------------------------------- |-----------:|----------:|---------:|------:|--------:|------------:|------------:|----------:|----------:|------------:|
+| ParquetNet_ReadDecode          | 1,738.0 ms | 127.52 ms | 33.12 ms |  1.00 |    0.02 | 254000.0000 | 133000.0000 | 6000.0000 |    2.7 GB |        1.00 |
+| ParquetSharp_Column_ReadDecode |   884.4 ms |  20.74 ms |  5.39 ms |  0.51 |    0.01 | 129000.0000 |  69000.0000 | 5000.0000 |   1.06 GB |        0.39 |
+| ParquetSharp_Arrow_ReadDecode  |   890.0 ms |  71.85 ms | 18.66 ms |  0.51 |    0.01 | 134000.0000 |  70000.0000 | 5000.0000 |   1.01 GB |        0.37 |
+| DuckDb_AdoNet_ReadDecode       |   952.6 ms |  44.98 ms | 11.68 ms |  0.55 |    0.01 | 134000.0000 |  71000.0000 | 5000.0000 |   1.01 GB |        0.37 |
+| DuckDb_Dapper_ReadDecode       | 1,101.7 ms | 186.38 ms | 48.40 ms |  0.63 |    0.03 | 149000.0000 |  77000.0000 | 6000.0000 |   1.13 GB |        0.42 |
+
+// * Hints *
+Outliers
+  ReadBenchmarks.ParquetSharp_Arrow_ReadDecode: Runtime=.NET 10.0, IterationCount=5, WarmupCount=2 -> 1 outlier  was  detected (858.73 ms)
+
+// * Legends *
+  Mean        : Arithmetic mean of all measurements
+  Error       : Half of 99.9% confidence interval
+  StdDev      : Standard deviation of all measurements
+  Ratio       : Mean of the ratio distribution ([Current]/[Baseline])
+  RatioSD     : Standard deviation of the ratio distribution ([Current]/[Baseline])
+  Gen0        : GC Generation 0 collects per 1000 operations
+  Gen1        : GC Generation 1 collects per 1000 operations
+  Gen2        : GC Generation 2 collects per 1000 operations
+  Allocated   : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  Alloc Ratio : Allocated memory ratio distribution ([Current]/[Baseline])
+  1 ms        : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:01:35 (95.93 sec), executed benchmarks: 5
+
+// Found 4 benchmarks:
+//   WriteBenchmarks.ParquetNet_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   WriteBenchmarks.ParquetSharp_Column_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   WriteBenchmarks.ParquetSharp_Arrow_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+//   WriteBenchmarks.DuckDb_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+
+// **************************
+// Benchmark: WriteBenchmarks.ParquetNet_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 142 143 --benchmarkName ParquetBenchmarks.Benchmarks.WriteBenchmarks.ParquetNet_Write --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 5 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 62584.00 ns, 62.5840 us/op
+WorkloadJitting  1: 1 op, 1677090417.00 ns, 1.6771 s/op
+
+OverheadJitting  2: 1 op, 1417.00 ns, 1.4170 us/op
+WorkloadJitting  2: 1 op, 1186833000.00 ns, 1.1868 s/op
+
+WorkloadWarmup   1: 1 op, 1156469875.00 ns, 1.1565 s/op
+WorkloadWarmup   2: 1 op, 1150348792.00 ns, 1.1503 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 1157883917.00 ns, 1.1579 s/op
+WorkloadActual   2: 1 op, 1194212250.00 ns, 1.1942 s/op
+WorkloadActual   3: 1 op, 1163094250.00 ns, 1.1631 s/op
+WorkloadActual   4: 1 op, 1144504208.00 ns, 1.1445 s/op
+WorkloadActual   5: 1 op, 1142342083.00 ns, 1.1423 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 1157883917.00 ns, 1.1579 s/op
+WorkloadResult   2: 1 op, 1163094250.00 ns, 1.1631 s/op
+WorkloadResult   3: 1 op, 1144504208.00 ns, 1.1445 s/op
+WorkloadResult   4: 1 op, 1142342083.00 ns, 1.1423 s/op
+// GC:  22 0 0 1191160504 1
+// Threading:  21 0 1
+
+// AfterAll
+// Benchmark Process 95761 has exited with code 0.
+
+Mean = 1.152 s, StdErr = 0.005 s (0.44%), N = 4, StdDev = 0.010 s
+Min = 1.142 s, Q1 = 1.144 s, Median = 1.151 s, Q3 = 1.159 s, Max = 1.163 s
+IQR = 0.015 s, LowerFence = 1.121 s, UpperFence = 1.182 s
+ConfidenceInterval = [1.087 s; 1.217 s] (CI 99.9%), Margin = 0.065 s (5.68% of Mean)
+Skewness = 0.07, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 3 (33,3 %) benchmark(s) to run. Estimated finish 2026-09-02 22:39 (0h 0m from now) **
+// **************************
+// Benchmark: WriteBenchmarks.ParquetSharp_Column_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 106 107 --benchmarkName ParquetBenchmarks.Benchmarks.WriteBenchmarks.ParquetSharp_Column_Write --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 6 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 72416.00 ns, 72.4160 us/op
+WorkloadJitting  1: 1 op, 923805375.00 ns, 923.8054 ms/op
+
+OverheadJitting  2: 1 op, 1042.00 ns, 1.0420 us/op
+WorkloadJitting  2: 1 op, 807278166.00 ns, 807.2782 ms/op
+
+WorkloadWarmup   1: 1 op, 801959750.00 ns, 801.9598 ms/op
+WorkloadWarmup   2: 1 op, 803914500.00 ns, 803.9145 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 802537084.00 ns, 802.5371 ms/op
+WorkloadActual   2: 1 op, 796930584.00 ns, 796.9306 ms/op
+WorkloadActual   3: 1 op, 803110083.00 ns, 803.1101 ms/op
+WorkloadActual   4: 1 op, 802994542.00 ns, 802.9945 ms/op
+WorkloadActual   5: 1 op, 810842500.00 ns, 810.8425 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 802537084.00 ns, 802.5371 ms/op
+WorkloadResult   2: 1 op, 796930584.00 ns, 796.9306 ms/op
+WorkloadResult   3: 1 op, 803110083.00 ns, 803.1101 ms/op
+WorkloadResult   4: 1 op, 802994542.00 ns, 802.9945 ms/op
+// GC:  19 1 0 567015600 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 95766 has exited with code 0.
+
+Mean = 801.393 ms, StdErr = 1.493 ms (0.19%), N = 4, StdDev = 2.985 ms
+Min = 796.931 ms, Q1 = 801.135 ms, Median = 802.766 ms, Q3 = 803.023 ms, Max = 803.110 ms
+IQR = 1.888 ms, LowerFence = 798.304 ms, UpperFence = 805.855 ms
+ConfidenceInterval = [782.102 ms; 820.684 ms] (CI 99.9%), Margin = 19.291 ms (2.41% of Mean)
+Skewness = -0.73, Kurtosis = 1.3, MValue = 2
+
+// ** Remained 2 (22,2 %) benchmark(s) to run. Estimated finish 2026-09-02 22:39 (0h 0m from now) **
+// **************************
+// Benchmark: WriteBenchmarks.ParquetSharp_Arrow_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 106 107 --benchmarkName ParquetBenchmarks.Benchmarks.WriteBenchmarks.ParquetSharp_Arrow_Write --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 7 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 65250.00 ns, 65.2500 us/op
+WorkloadJitting  1: 1 op, 750441250.00 ns, 750.4413 ms/op
+
+OverheadJitting  2: 1 op, 1667.00 ns, 1.6670 us/op
+WorkloadJitting  2: 1 op, 536614417.00 ns, 536.6144 ms/op
+
+WorkloadWarmup   1: 1 op, 537742416.00 ns, 537.7424 ms/op
+WorkloadWarmup   2: 1 op, 538635667.00 ns, 538.6357 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 533606084.00 ns, 533.6061 ms/op
+WorkloadActual   2: 1 op, 533716417.00 ns, 533.7164 ms/op
+WorkloadActual   3: 1 op, 597070875.00 ns, 597.0709 ms/op
+WorkloadActual   4: 1 op, 538325459.00 ns, 538.3255 ms/op
+WorkloadActual   5: 1 op, 552443208.00 ns, 552.4432 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 533606084.00 ns, 533.6061 ms/op
+WorkloadResult   2: 1 op, 533716417.00 ns, 533.7164 ms/op
+WorkloadResult   3: 1 op, 538325459.00 ns, 538.3255 ms/op
+WorkloadResult   4: 1 op, 552443208.00 ns, 552.4432 ms/op
+// GC:  1 1 1 1053579960 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 95769 has exited with code 0.
+
+Mean = 539.523 ms, StdErr = 4.445 ms (0.82%), N = 4, StdDev = 8.890 ms
+Min = 533.606 ms, Q1 = 533.689 ms, Median = 536.021 ms, Q3 = 541.855 ms, Max = 552.443 ms
+IQR = 8.166 ms, LowerFence = 521.440 ms, UpperFence = 554.104 ms
+ConfidenceInterval = [482.076 ms; 596.969 ms] (CI 99.9%), Margin = 57.447 ms (10.65% of Mean)
+Skewness = 0.62, Kurtosis = 1.21, MValue = 2
+
+// ** Remained 1 (11,1 %) benchmark(s) to run. Estimated finish 2026-09-02 22:39 (0h 0m from now) **
+// **************************
+// Benchmark: WriteBenchmarks.DuckDb_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ParquetBenchmarks-Job-OIFEUM-1.dll --anonymousPipes 106 107 --benchmarkName ParquetBenchmarks.Benchmarks.WriteBenchmarks.DuckDb_Write --job "Runtime=.NET 10.0, IterationCount=5, WarmupCount=2" --benchmarkId 8 in /Users/stephen/Downloads/ParquetBenchmarks 2/bin/Release/net10.0/ParquetBenchmarks-Job-OIFEUM-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-AMZPBM(IterationCount=5, WarmupCount=2)
+
+OverheadJitting  1: 1 op, 104750.00 ns, 104.7500 us/op
+WorkloadJitting  1: 1 op, 1012993250.00 ns, 1.0130 s/op
+
+OverheadJitting  2: 1 op, 1208.00 ns, 1.2080 us/op
+WorkloadJitting  2: 1 op, 805949500.00 ns, 805.9495 ms/op
+
+WorkloadWarmup   1: 1 op, 795056542.00 ns, 795.0565 ms/op
+WorkloadWarmup   2: 1 op, 794337500.00 ns, 794.3375 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 784885583.00 ns, 784.8856 ms/op
+WorkloadActual   2: 1 op, 793448708.00 ns, 793.4487 ms/op
+WorkloadActual   3: 1 op, 786363167.00 ns, 786.3632 ms/op
+WorkloadActual   4: 1 op, 831852917.00 ns, 831.8529 ms/op
+WorkloadActual   5: 1 op, 790901250.00 ns, 790.9013 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 784885583.00 ns, 784.8856 ms/op
+WorkloadResult   2: 1 op, 793448708.00 ns, 793.4487 ms/op
+WorkloadResult   3: 1 op, 786363167.00 ns, 786.3632 ms/op
+WorkloadResult   4: 1 op, 790901250.00 ns, 790.9013 ms/op
+// GC:  97 0 0 816242200 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 95770 has exited with code 0.
+
+Mean = 788.900 ms, StdErr = 1.984 ms (0.25%), N = 4, StdDev = 3.968 ms
+Min = 784.886 ms, Q1 = 785.994 ms, Median = 788.632 ms, Q3 = 791.538 ms, Max = 793.449 ms
+IQR = 5.544 ms, LowerFence = 777.677 ms, UpperFence = 799.855 ms
+ConfidenceInterval = [763.255 ms; 814.544 ms] (CI 99.9%), Margin = 25.644 ms (3.25% of Mean)
+Skewness = 0.08, Kurtosis = 0.75, MValue = 2
+
+// ** Remained 0 (0,0 %) benchmark(s) to run. Estimated finish 2026-09-02 22:39 (0h 0m from now) **
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.WriteBenchmarks-report.csv
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.WriteBenchmarks-report-github.md
+  BenchmarkDotNet.Artifacts/results/ParquetBenchmarks.Benchmarks.WriteBenchmarks-report.html
+
+// * Detailed results *
+WriteBenchmarks.ParquetNet_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 1.152 s, StdErr = 0.005 s (0.44%), N = 4, StdDev = 0.010 s
+Min = 1.142 s, Q1 = 1.144 s, Median = 1.151 s, Q3 = 1.159 s, Max = 1.163 s
+IQR = 0.015 s, LowerFence = 1.121 s, UpperFence = 1.182 s
+ConfidenceInterval = [1.087 s; 1.217 s] (CI 99.9%), Margin = 0.065 s (5.68% of Mean)
+Skewness = 0.07, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[1.139 s ; 1.171 s) | @@@@
+---------------------------------------------------
+
+WriteBenchmarks.ParquetSharp_Column_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 801.393 ms, StdErr = 1.493 ms (0.19%), N = 4, StdDev = 2.985 ms
+Min = 796.931 ms, Q1 = 801.135 ms, Median = 802.766 ms, Q3 = 803.023 ms, Max = 803.110 ms
+IQR = 1.888 ms, LowerFence = 798.304 ms, UpperFence = 805.855 ms
+ConfidenceInterval = [782.102 ms; 820.684 ms] (CI 99.9%), Margin = 19.291 ms (2.41% of Mean)
+Skewness = -0.73, Kurtosis = 1.3, MValue = 2
+-------------------- Histogram --------------------
+[794.462 ms ; 805.578 ms) | @@@@
+---------------------------------------------------
+
+WriteBenchmarks.ParquetSharp_Arrow_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 539.523 ms, StdErr = 4.445 ms (0.82%), N = 4, StdDev = 8.890 ms
+Min = 533.606 ms, Q1 = 533.689 ms, Median = 536.021 ms, Q3 = 541.855 ms, Max = 552.443 ms
+IQR = 8.166 ms, LowerFence = 521.440 ms, UpperFence = 554.104 ms
+ConfidenceInterval = [482.076 ms; 596.969 ms] (CI 99.9%), Margin = 57.447 ms (10.65% of Mean)
+Skewness = 0.62, Kurtosis = 1.21, MValue = 2
+-------------------- Histogram --------------------
+[528.615 ms ; 543.316 ms) | @@@
+[543.316 ms ; 559.794 ms) | @
+---------------------------------------------------
+
+WriteBenchmarks.DuckDb_Write: Job-OIFEUM(Runtime=.NET 10.0, IterationCount=5, WarmupCount=2)
+Runtime = .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 788.900 ms, StdErr = 1.984 ms (0.25%), N = 4, StdDev = 3.968 ms
+Min = 784.886 ms, Q1 = 785.994 ms, Median = 788.632 ms, Q3 = 791.538 ms, Max = 793.449 ms
+IQR = 5.544 ms, LowerFence = 777.677 ms, UpperFence = 799.855 ms
+ConfidenceInterval = [763.255 ms; 814.544 ms] (CI 99.9%), Margin = 25.644 ms (3.25% of Mean)
+Skewness = 0.08, Kurtosis = 0.75, MValue = 2
+-------------------- Histogram --------------------
+[781.604 ms ; 796.730 ms) | @@@@
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.15.8, macOS Tahoe 26.6.2 (25G83) [Darwin 25.6.0]
+Apple M4, 1 CPU, 10 logical and 10 physical cores
+.NET SDK 10.0.201
+  [Host]     : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+  Job-OIFEUM : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+
+Runtime=.NET 10.0  IterationCount=5  WarmupCount=2  
+
+| Method                    | Mean       | Error    | StdDev   | Ratio | Gen0       | Gen1      | Gen2      | Allocated  | Alloc Ratio |
+|-------------------------- |-----------:|---------:|---------:|------:|-----------:|----------:|----------:|-----------:|------------:|
+| ParquetNet_Write          | 1,152.0 ms | 65.39 ms | 10.12 ms |  1.00 | 22000.0000 |         - |         - | 1135.98 MB |        1.00 |
+| ParquetSharp_Column_Write |   801.4 ms | 19.29 ms |  2.99 ms |  0.70 | 19000.0000 | 1000.0000 |         - |  540.75 MB |        0.48 |
+| ParquetSharp_Arrow_Write  |   539.5 ms | 57.45 ms |  8.89 ms |  0.47 |  1000.0000 | 1000.0000 | 1000.0000 | 1004.77 MB |        0.88 |
+| DuckDb_Write              |   788.9 ms | 25.64 ms |  3.97 ms |  0.68 | 97000.0000 |         - |         - |  778.43 MB |        0.69 |
+
+// * Hints *
+Outliers
+  WriteBenchmarks.ParquetNet_Write: Runtime=.NET 10.0, IterationCount=5, WarmupCount=2          -> 1 outlier  was  removed (1.19 s)
+  WriteBenchmarks.ParquetSharp_Column_Write: Runtime=.NET 10.0, IterationCount=5, WarmupCount=2 -> 1 outlier  was  removed, 2 outliers were detected (796.93 ms, 810.84 ms)
+  WriteBenchmarks.ParquetSharp_Arrow_Write: Runtime=.NET 10.0, IterationCount=5, WarmupCount=2  -> 1 outlier  was  removed (597.07 ms)
+  WriteBenchmarks.DuckDb_Write: Runtime=.NET 10.0, IterationCount=5, WarmupCount=2              -> 1 outlier  was  removed (831.85 ms)
+
+// * Legends *
+  Mean        : Arithmetic mean of all measurements
+  Error       : Half of 99.9% confidence interval
+  StdDev      : Standard deviation of all measurements
+  Ratio       : Mean of the ratio distribution ([Current]/[Baseline])
+  Gen0        : GC Generation 0 collects per 1000 operations
+  Gen1        : GC Generation 1 collects per 1000 operations
+  Gen2        : GC Generation 2 collects per 1000 operations
+  Allocated   : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  Alloc Ratio : Allocated memory ratio distribution ([Current]/[Baseline])
+  1 ms        : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:01:08 (68.73 sec), executed benchmarks: 4
+
+Global total time: 00:02:47 (168 sec), executed benchmarks: 9
+// * Artifacts cleanup *
+Artifacts cleanup is finished

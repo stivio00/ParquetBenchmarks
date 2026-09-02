@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- BenchmarkDotNet requires Release builds; it will warn/refuse in Debug -->
+    <Optimize Condition="'$(Configuration)'=='Release'">true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
+
+    <!-- Pure managed Parquet reader/writer -->
+    <PackageReference Include="Parquet.Net" Version="6.1.0" />
+
+    <!-- Native apache-parquet-cpp wrapper; also gives us the Arrow-based API -->
+    <PackageReference Include="ParquetSharp" Version="24.0.0" />
+
+    <!-- Official Arrow columnar library, used directly for the Arrow builders -->
+    <PackageReference Include="Apache.Arrow" Version="23.0.0" />
+
+    <!-- Native DuckDB engine wrapper. This is the Skuirrels re-publish of
+         DuckDB.NET.Data.Full 1.5.5 (same ADO.NET API, same bundled native
+         duckdb 1.5.5); the EF Core provider below requires this exact fork. -->
+    <PackageReference Include="Skuirrels.DuckDB.NET.Data.Full" Version="1.5.5.4" />
+
+    <!-- EF Core 10 provider for DuckDB: LINQ queries over read_parquet, tracked
+         SaveChanges (with insert batching) and appender-backed BulkInsert -->
+    <PackageReference Include="DuckDB.EFCoreProvider" Version="1.24.0" />
+
+    <!-- Micro-ORM used on top of DuckDB.NET for the read/decode comparison -->
+    <PackageReference Include="Dapper" Version="2.1.79" />
+  </ItemGroup>
+
+</Project>
