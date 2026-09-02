@@ -2,6 +2,8 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 using Dapper;
 using DuckDBWrapper = DuckDB.NET.Data;
+using DuckDB.EFCoreProvider.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Parquet;
 using Parquet.Serialization;
 using ParquetBenchmarks.Models;
@@ -19,6 +21,7 @@ public class ReadBenchmarks
     private string _parquetSharpColumnPath = default!;
     private string _parquetSharpArrowPath = default!;
     private string _duckDbPath = default!;
+    private DbContextOptions<BenchEfReadContext> _efReadOptions = default!;
 
     [GlobalSetup]
     public async Task Setup()
@@ -68,6 +71,13 @@ public class ReadBenchmarks
             copy.CommandText = $"COPY bench TO '{_duckDbPath}' (FORMAT parquet);";
             copy.ExecuteNonQuery();
         }
+
+        // The EF Core read context has no database state of its own (the entity
+        // maps directly onto the parquet file), so a throwaway in-memory
+        // connection per query is all it needs.
+        _efReadOptions = new DbContextOptionsBuilder<BenchEfReadContext>()
+            .UseDuckDB("Data Source=:memory:")
+            .Options;
     }
 
     [GlobalCleanup]
@@ -141,5 +151,13 @@ public class ReadBenchmarks
         var sql = $"SELECT Id, Name, Price, CreatedAt, CreatedAtText, IsActive, Category, Rating, ExternalId, Description FROM read_parquet('{_duckDbPath}');";
         var rows = connection.Query<BenchRow>(sql); // buffered: fully materializes into a List<T>
         return rows.AsList().Count;
+    }
+
+    [Benchmark]
+    public int DuckDb_EfCore_ReadDecode()
+    {
+        using var context = new BenchEfReadContext(_efReadOptions, _duckDbPath);
+        var rows = context.Bench.AsNoTracking().ToList();
+        return rows.Count;
     }
 }

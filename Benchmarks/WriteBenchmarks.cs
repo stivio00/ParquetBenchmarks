@@ -1,6 +1,8 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 using DuckDBWrapper = DuckDB.NET.Data;
+using DuckDB.EFCoreProvider.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Parquet;
 using Parquet.Serialization;
 using ParquetBenchmarks.Models;
@@ -15,6 +17,7 @@ public class WriteBenchmarks
 
     private BenchRow[] _rows = Array.Empty<BenchRow>();
     private string _dir = default!;
+    private DbContextOptions<BenchEfWriteContext> _efWriteOptions = default!;
 
     [GlobalSetup]
     public void Setup()
@@ -24,6 +27,10 @@ public class WriteBenchmarks
         _rows = DataGenerator.Generate(RowCount);
         _dir = Path.Combine(Path.GetTempPath(), "parquet-bench-write");
         Directory.CreateDirectory(_dir);
+
+        _efWriteOptions = new DbContextOptionsBuilder<BenchEfWriteContext>()
+            .UseDuckDB("Data Source=:memory:", duckdb => duckdb.EnableBulkInsertBatching())
+            .Options;
     }
 
     [GlobalCleanup]
@@ -96,5 +103,43 @@ public class WriteBenchmarks
         using var copy = connection.CreateCommand();
         copy.CommandText = $"COPY bench TO '{outPath}' (FORMAT parquet);";
         copy.ExecuteNonQuery();
+    }
+
+    [Benchmark]
+    public void DuckDb_EfCore_Write()
+    {
+        var outPath = PathFor("duckdb_efcore.parquet").Replace("\\", "/");
+
+        using var context = new BenchEfWriteContext(_efWriteOptions);
+        // An in-memory DuckDB only lives as long as its connection and EF
+        // opens/closes per command, so hold it open for the context's lifetime.
+        context.Database.OpenConnection();
+        context.Database.EnsureCreated();
+        context.ChangeTracker.AutoDetectChangesEnabled = false;
+
+        // The canonical EF Core write path: tracked entities + SaveChanges,
+        // with the provider's insert batching merging rows into multi-row
+        // INSERT statements (roughly an order of magnitude faster than the
+        // default one-statement-per-row behaviour).
+        context.Bench.AddRange(_rows);
+        context.SaveChanges();
+
+        context.Database.ExecuteSql($"COPY bench TO {outPath} (FORMAT parquet);");
+    }
+
+    [Benchmark]
+    public void DuckDb_EfCore_BulkWrite()
+    {
+        var outPath = PathFor("duckdb_efcore_bulk.parquet").Replace("\\", "/");
+
+        using var context = new BenchEfWriteContext(_efWriteOptions);
+        context.Database.OpenConnection();
+        context.Database.EnsureCreated();
+
+        // The provider's ETL fast path: appends straight through DuckDB's
+        // columnar Appender and bypasses the change tracker entirely.
+        context.BulkInsert(_rows);
+
+        context.Database.ExecuteSql($"COPY bench TO {outPath} (FORMAT parquet);");
     }
 }
