@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>ParquetBenchmarks.Benchmarks.ReadBenchmarks-20260902-225930</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.8, macOS Tahoe 26.6.2 (25G83) [Darwin 25.6.0]
+Apple M4, 1 CPU, 10 logical and 10 physical cores
+.NET SDK 10.0.201
+  [Host]     : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+  Job-OIFEUM : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+</code></pre>
+<pre><code>Runtime=.NET 10.0  IterationCount=5  WarmupCount=2  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                  </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th><th>RatioSD</th><th>Gen0 </th><th>Gen1 </th><th>Gen2</th><th>Allocated</th><th>Alloc Ratio</th>
+</tr>
+</thead><tbody><tr><td>ParquetNet_ReadDecode</td><td>1,634.4 ms</td><td>133.20 ms</td><td>20.61 ms</td><td>1.00</td><td>0.02</td><td>254000.0000</td><td>134000.0000</td><td>6000.0000</td><td>2.7 GB</td><td>1.00</td>
+</tr><tr><td>ParquetSharp_Column_ReadDecode</td><td>833.8 ms</td><td>49.92 ms</td><td>12.96 ms</td><td>0.51</td><td>0.01</td><td>129000.0000</td><td>68000.0000</td><td>5000.0000</td><td>1.06 GB</td><td>0.39</td>
+</tr><tr><td>ParquetSharp_Arrow_ReadDecode</td><td>842.4 ms</td><td>46.70 ms</td><td>12.13 ms</td><td>0.52</td><td>0.01</td><td>134000.0000</td><td>70000.0000</td><td>5000.0000</td><td>1.01 GB</td><td>0.37</td>
+</tr><tr><td>DuckDb_AdoNet_ReadDecode</td><td>892.0 ms</td><td>130.14 ms</td><td>20.14 ms</td><td>0.55</td><td>0.01</td><td>134000.0000</td><td>71000.0000</td><td>5000.0000</td><td>1.01 GB</td><td>0.37</td>
+</tr><tr><td>DuckDb_Dapper_ReadDecode</td><td>1,015.4 ms</td><td>107.19 ms</td><td>27.84 ms</td><td>0.62</td><td>0.02</td><td>149000.0000</td><td>77000.0000</td><td>6000.0000</td><td>1.13 GB</td><td>0.42</td>
+</tr><tr><td>DuckDb_EfCore_ReadDecode</td><td>1,078.1 ms</td><td>481.69 ms</td><td>74.54 ms</td><td>0.66</td><td>0.04</td><td>158000.0000</td><td>83000.0000</td><td>6000.0000</td><td>1.2 GB</td><td>0.44</td>
+</tr></tbody></table>
+</body>
+</html>

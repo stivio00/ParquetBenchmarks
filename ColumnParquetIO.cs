@@ -8,10 +8,10 @@ using ParquetSharp;
 
 namespace ParquetBenchmarks;
 
-public static class ColumnParquetIO
+public static class ColumnParquetIo
 {
     private static readonly Column[] Columns =
-    {
+    [
         new Column<long>("Id"),
         new Column<string>("Name"),
         new Column<float>("Price"),
@@ -22,7 +22,7 @@ public static class ColumnParquetIO
         new Column<double>("Rating"),
         new Column<string>("ExternalId"),
         new Column<string>("Description")
-    };
+    ];
 
     public static void Write(string path, BenchRow[] rows)
     {
@@ -38,7 +38,7 @@ public static class ColumnParquetIO
         var externalIds = new string[count];
         var descriptions = new string[count];
 
-        for (int i = 0; i < count; i++)
+        for (var i = 0; i < count; i++)
         {
             var r = rows[i];
             ids[i] = r.Id;

@@ -52,13 +52,13 @@ public class WriteBenchmarks
     [Benchmark]
     public void ParquetSharp_Column_Write()
     {
-        ColumnParquetIO.Write(PathFor("parquetsharp_column.parquet"), _rows);
+        ColumnParquetIo.Write(PathFor("parquetsharp_column.parquet"), _rows);
     }
 
     [Benchmark]
     public void ParquetSharp_Arrow_Write()
     {
-        ArrowParquetIO.Write(PathFor("parquetsharp_arrow.parquet"), _rows);
+        ArrowParquetIo.Write(PathFor("parquetsharp_arrow.parquet"), _rows);
     }
 
     [Benchmark]

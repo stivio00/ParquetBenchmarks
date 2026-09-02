@@ -38,10 +38,10 @@ public class ReadBenchmarks
             await ParquetSerializer.SerializeAsync(rows, fs);
 
         _parquetSharpColumnPath = Path.Combine(_dir, "parquetsharp_column.parquet");
-        ColumnParquetIO.Write(_parquetSharpColumnPath, rows);
+        ColumnParquetIo.Write(_parquetSharpColumnPath, rows);
 
         _parquetSharpArrowPath = Path.Combine(_dir, "parquetsharp_arrow.parquet");
-        ArrowParquetIO.Write(_parquetSharpArrowPath, rows);
+        ArrowParquetIo.Write(_parquetSharpArrowPath, rows);
 
         _duckDbPath = Path.Combine(_dir, "duckdb.parquet").Replace("\\", "/");
         using (var connection = new DuckDBWrapper.DuckDBConnection("DataSource=:memory:"))
@@ -101,14 +101,14 @@ public class ReadBenchmarks
     [Benchmark]
     public int ParquetSharp_Column_ReadDecode()
     {
-        var rows = ColumnParquetIO.Read(_parquetSharpColumnPath);
+        var rows = ColumnParquetIo.Read(_parquetSharpColumnPath);
         return rows.Count;
     }
 
     [Benchmark]
     public async Task<int> ParquetSharp_Arrow_ReadDecode()
     {
-        var rows = await ArrowParquetIO.ReadAsync(_parquetSharpArrowPath);
+        var rows = await ArrowParquetIo.ReadAsync(_parquetSharpArrowPath);
         return rows.Count;
     }
 

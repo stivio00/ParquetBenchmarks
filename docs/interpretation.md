@@ -1,0 +1,93 @@
+# Interpreting the results
+
+Numbers below are from a full-suite run on Apple M4 (10 cores), .NET 10.0.5,
+Arm64, macOS Tahoe, BenchmarkDotNet v0.15.8, 1M rows × 10 columns, Snappy
+compression, 5 iterations / 2 warmups. The EF Core rows come from a separate
+filtered run on the same machine and day. **Absolute numbers will differ on
+your hardware — the ratios and the shape of the story are what transfer.**
+Re-run locally before quoting anything.
+
+## Read + decode into 1M POCOs
+
+| Method | Mean | vs Parquet.Net | Allocated |
+|---|---:|---:|---:|
+| `ParquetNet_ReadDecode` (baseline) | 1,738 ms | 1.00× | 2.7 GB |
+| `ParquetSharp_Column_ReadDecode` | 884 ms | 0.51× | 1.06 GB |
+| `ParquetSharp_Arrow_ReadDecode` | 890 ms | 0.51× | 1.01 GB |
+| `DuckDb_AdoNet_ReadDecode` | 953 ms | 0.55× | 1.01 GB |
+| `DuckDb_Dapper_ReadDecode` | 1,102 ms | 0.63× | 1.13 GB |
+| `DuckDb_EfCore_ReadDecode` | 1,106 ms | ~0.64× | 1.2 GB |
+
+**What this says**
+
+1. **Pure-managed decode costs ~2×.** Parquet.Net is the only path with no
+   native parquet engine, and it shows: ~0.85 s and ~1.7 GB *extra* versus
+   the pack. That's the price of portability and zero-friction deployment.
+2. **Everyone else converges around 0.88–1.1 s — because materialization
+   dominates.** Once the decode itself is native-fast, most of the remaining
+   time is allocating 1M `BenchRow` objects and their strings. This is the
+   honest cost of "give me all the rows as objects"; no library can escape it.
+   If your real workload is `WHERE`/`GROUP BY`-shaped, use DuckDB SQL and the
+   answer drops to milliseconds because nothing gets materialized.
+3. **Dapper's overhead is real but small**: ~150 ms (+16%) and ~120 MB over
+   raw ADO.NET at 1M rows — cached-reflection hydration, per row. Fine for
+   convenience, worth switching away from at 10–100M rows.
+4. **EF Core reads as fast as Dapper** here despite the full LINQ pipeline,
+   because the query is trivial (`AsNoTracking` + full scan) and the DuckDB
+   scan + materialization dominates. The ORM tax on reads is *not* the story
+   — it's on writes (below).
+
+## Write 1M rows to parquet
+
+| Method | Mean | vs Parquet.Net | Allocated |
+|---|---:|---:|---:|
+| `ParquetNet_Write` (baseline) | 1,152 ms | 1.00× | 1.14 GB |
+| `ParquetSharp_Column_Write` | 801 ms | 0.70× | 541 MB |
+| `ParquetSharp_Arrow_Write` | 540 ms | 0.47× | 1.00 GB |
+| `DuckDb_Write` (appender + COPY) | 789 ms | 0.68× | 778 MB |
+| `DuckDb_EfCore_BulkWrite` | 809 ms | ~0.70× | **495 KB** |
+| `DuckDb_EfCore_Write` (SaveChanges) | 34,571 ms | **~30×** | **~8.2 GB** |
+
+**What this says**
+
+5. **Arrow is the fastest write** (0.47×) — building typed Arrow arrays is
+   cheap, and the native writer does the rest. But it *builds the whole batch
+   in managed memory first*: ~1 GB transient allocations. Fast time, fat GC.
+6. **ParquetSharp's column API is the balanced write**: 0.70× time and the
+   lowest allocations of the "normal" paths (541 MB — one typed array per
+   column, then straight to native).
+7. **DuckDB's appender+COPY is a solid middle** (0.68×) but its row-by-row
+   `AppendValue(object)` boxing is visible: 778 MB allocated for the same
+   work the EF provider does with 495 KB.
+8. **`BulkInsert` is the star of the write side**: same wall-clock as the raw
+   appender path (~0.70×) with *essentially zero* managed allocations — it
+   stages entities straight into DuckDB's native columnar appender. If you
+   want ORM ergonomics at ETL scale, this is the API to use.
+9. **`SaveChanges` at bulk scale is a category error**: ~35 s and ~8.2 GB —
+   roughly 30× slower and 8,000× more allocated bytes than its own `BulkInsert`
+   sibling. The cost is snapshotting 1M tracked entities (original values for
+   change detection) plus per-batch statement generation. `SaveChanges` is
+   built for OLTP-sized units of work (hundreds–thousands of rows), and this
+   benchmark is the cautionary tale.
+10. **Watch allocations, not just time, if you run concurrent workloads.**
+    2.7 GB vs 1.0 GB per million rows read is the difference between Gen2/GC
+    pauses under load and none.
+
+## Caveats before you quote these numbers
+
+- **Single row group for the ParquetSharp paths, DuckDB's default ~122k-row
+  groups for its files.** Row-group size affects both compression ratio and
+  read parallelism; a different layout shifts absolute numbers.
+- **Each library reads its own file.** Schema nullability differs slightly
+  (e.g. ParquetSharp marks string columns optional by default, DuckDB's COPY
+  writes required columns). Row-identical, byte-different files.
+- **5 iterations = wide error bars** on anything slow (the EF `SaveChanges`
+  error alone is ±3.5 s). Treat single-digit-percent differences as noise.
+- **The dataset is deliberately string-heavy** (6 of 10 columns). A
+  numeric-heavy schema would flatter the batch-oriented paths even more,
+  because string materialization is what flattens the read-side differences.
+- **Reads fully materialize 1M POCOs** by design. Streaming/partial-read
+  workloads (e.g. S3 range reads, column projection) live in
+  [streams-and-s3.md](streams-and-s3.md) and change the calculus completely.
+- One machine, one day, .NET 10.0.5. Rerun on your target hardware; the
+  `--filter` examples in the README make that cheap per-library.

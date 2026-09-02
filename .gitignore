@@ -15,8 +15,7 @@ artifacts/
 [Ll]og/
 [Ll]ogs/
 
-# BenchmarkDotNet results
-BenchmarkDotNet.Artifacts/
+
 
 # Test results
 [Tt]est[Rr]esult*/

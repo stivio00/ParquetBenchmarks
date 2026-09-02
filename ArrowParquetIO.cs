@@ -17,9 +17,9 @@ using ParquetSharp.Arrow;
 
 namespace ParquetBenchmarks;
 
-public static class ArrowParquetIO
+public static class ArrowParquetIo
 {
-    public static Schema BuildSchema() =>
+    private static Schema BuildSchema() =>
         new Schema.Builder()
             .Field(f => f.Name("Id").DataType(Int64Type.Default).Nullable(false))
             .Field(f => f.Name("Name").DataType(StringType.Default).Nullable(false))
