@@ -1,7 +1,9 @@
 # .NET Parquet read/write benchmarks
 
-Six libraries and access layers, twelve benchmark methods, one fixed dataset:
-1,000,000 rows × 10 columns, BenchmarkDotNet + `[MemoryDiagnoser]` on .NET 10.
+Six libraries and access layers, sixteen benchmark methods (twelve per-library
+plus four that decode a shared cross-language reference file), one fixed
+dataset: 1,000,000 rows × 10 columns, BenchmarkDotNet + `[MemoryDiagnoser]`
+on .NET 10.
 
 | # | Library (pinned version) | API exercised | Read | Write | Direct S3 |
 |---|---|---|:---:|:---:|:---:|
@@ -24,6 +26,22 @@ Further docs:
 - [docs/interpretation.md](docs/interpretation.md) — what the measured numbers actually mean
 - [docs/streams-and-s3.md](docs/streams-and-s3.md) — MemoryStream/stream support per library, and reading parquet from S3 (AWS SDK vs DuckDB's native `httpfs` reader)
 - [python/README.md](python/README.md) — the same benchmark design implemented in Python (polars, pandas, pyarrow, fastparquet, duckdb)
+- [results/README.md](results/README.md) — committed full-suite results for both languages, including the cross-language comparison
+
+## The shared reference file
+
+`data/bench-1m.parquet` (~158 MB, deliberately kept in the repo) is the
+canonical dataset, generated deterministically by `python/make_reference.py`
+(seed 42, Snappy, single 1M-row row group). The C#
+`SharedFileReadBenchmarks` class and the Python `SharedFile_*` group both
+decode these **identical bytes**, which makes cross-language comparison
+honest for the first time: the matched pair (same file, same native DuckDB
+engine, same full row materialization) is C# 1,157 ms into POCOs vs Python
+1,075 ms into tuples — a dead heat, not "Python is faster than C#". See
+[results/README.md](results/README.md) for the analysis. The file's schema
+is tuned for compatibility: string columns OPTIONAL (Parquet.Net's POCO
+reader rejects required string columns), value columns REQUIRED, timestamps
+in micros.
 
 ## Python sibling benchmarks
 
@@ -113,9 +131,10 @@ results.
 ## Running it
 
 ```bash
-dotnet run -c Release                          # everything (~10 min, see below)
+dotnet run -c Release                          # everything (~12 min, see below)
 dotnet run -c Release -- --filter *Write*      # writes only
 dotnet run -c Release -- --filter *ReadDecode* # reads only
+dotnet run -c Release -- --filter *SharedFile* # cross-language reference-file reads
 dotnet run -c Release -- --filter *EfCore*     # the three EF Core benchmarks
 dotnet run -c Release -- --filter *ParquetNet* # a single method
 ```

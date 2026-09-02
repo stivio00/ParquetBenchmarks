@@ -23,11 +23,25 @@ uv run python benchmark.py     # full suite: 1M rows, 2 warmups, 5 iterations
 uv run python benchmark.py --quick          # smoke run: 100k rows
 uv run python benchmark.py --filter polars  # substring filter on names
 uv run python benchmark.py --list           # list benchmark names
+uv run python make_reference.py             # regenerate data/bench-1m.parquet
 ```
 
 Options: `--rows`, `--warmup`, `--iterations`, `--seed`, `--filter`,
 `--quick`, `--list`. Expect a few minutes for the full suite at 1M rows
 (dataset generation alone is a pure-Python loop).
+
+## The shared reference file (cross-language comparison)
+
+`make_reference.py` writes `../data/bench-1m.parquet` — the canonical 1M-row
+dataset, checked into the repo so this suite and the C# suite
+(`SharedFileReadBenchmarks`) decode **identical bytes**. When the file is
+present, the `SharedFile_*` benchmarks run automatically against it. Its
+schema is chosen for maximum compatibility: string columns are OPTIONAL
+(Parquet.Net's POCO reader rejects required string columns), value columns
+are REQUIRED, timestamps are micros. The matched cross-language pair —
+same file, same native DuckDB engine, same full row materialization — is
+C# `SharedFile_DuckDb_AdoNet_ReadDecode` (1,157 ms into POCOs) vs Python
+`SharedFile_DuckDb_FetchAll_ReadDecode` (1,075 ms into tuples): a dead heat.
 
 ## How it's constructed (and where it deliberately differs from C#)
 
@@ -73,56 +87,66 @@ con.execute("SELECT Category, avg(Rating) FROM read_parquet('polars.parquet') GR
 
 ## Sample results
 
-Full 1M-row suite on the same Apple M4 / .NET machine as the C# results in
-[../docs/interpretation.md](../docs/interpretation.md), Python 3.14,
-pandas 3.0.5, polars 1.44.1, pyarrow 25.0.1, duckdb 1.5.5, fastparquet 2026.5.0
-(2 warmups, 5 iterations). Re-run before quoting; ratios are what transfer.
+Full 1M-row suite on the same Apple M4 / .NET machine as the C# results,
+Python 3.14, pandas 3.0.5, polars 1.44.1, pyarrow 25.0.1, duckdb 1.5.5,
+fastparquet 2026.5.0 (2 warmups, 5 iterations). The verbatim output of this
+run is committed at [../results/python-suite.txt](../results/python-suite.txt);
+the C# counterpart lives in [../results/](../results/). Re-run before
+quoting; ratios are what transfer.
 
-Write 1,000,000 rows:
-
-| Benchmark | Mean | Ratio |
-|---|---:|---:|
-| `Pandas_PyArrow_Write` (baseline) | 576 ms | 1.00× |
-| `Pandas_Fastparquet_Write` | 1,007 ms | 1.75× |
-| `Polars_Write` | **179 ms** | **0.31×** |
-| `PyArrow_Write` | 616 ms | 1.07× |
-| `DuckDb_Write` | 355 ms | 0.62× |
-
-Read + decode (1,000,000 rows):
+Write 1,000,000 rows (each engine's own file):
 
 | Benchmark | Mean | Ratio |
 |---|---:|---:|
-| `Pandas_PyArrow_ReadDecode` (baseline) | 135 ms | 1.00× |
-| `Pandas_Fastparquet_ReadDecode` | 344 ms | 2.56× |
-| `Polars_ReadDecode` | **45 ms** | **0.33×** |
-| `PyArrow_ReadDecode` | 131 ms | 0.97× |
-| `DuckDb_FetchAll_ReadDecode` | 996 ms | 7.40× |
+| `Pandas_PyArrow_Write` (baseline) | 571 ms | 1.00× |
+| `Pandas_Fastparquet_Write` | 962 ms | 1.68× |
+| `Polars_Write` | **158 ms** | **0.28×** |
+| `PyArrow_Write` | 564 ms | 0.99× |
+| `DuckDb_Write` | 334 ms | 0.58× |
+
+Read + decode (each engine's own file):
+
+| Benchmark | Mean | Ratio |
+|---|---:|---:|
+| `Pandas_PyArrow_ReadDecode` (baseline) | 133 ms | 1.00× |
+| `Pandas_Fastparquet_ReadDecode` | 335 ms | 2.53× |
+| `Polars_ReadDecode` | **44 ms** | **0.33×** |
+| `PyArrow_ReadDecode` | 128 ms | 0.96× |
+| `DuckDb_FetchAll_ReadDecode` | 933 ms | 7.03× |
+
+Read + decode the shared reference file (single 1M-row row group):
+
+| Benchmark | Mean | Ratio |
+|---|---:|---:|
+| `SharedFile_Polars_ReadDecode` | 246 ms | 1.88× |
+| `SharedFile_PyArrow_ReadDecode` | 126 ms | 0.97× |
+| `SharedFile_Pandas_ReadDecode` (baseline) | 131 ms | 1.00× |
+| `SharedFile_DuckDb_FetchAll_ReadDecode` | 1,075 ms | 8.21× |
 
 Reading of these numbers:
 
-- **Polars is the outlier** — ~3× faster than everything else in both
-  directions. Its multithreaded Rust reader/writer and string handling are
-  simply a different class; if you have a Python service doing hot parquet
-  I/O, this is the bar.
-- **pandas ≈ pyarrow on read** (135 vs 131 ms): the Arrow→DataFrame
-  conversion is nearly free next to decode, so pandas' engine choice matters
-  little for reads. On write, pandas' df→Arrow conversion is likewise not
-  the bottleneck — string encoding dominates, which is why
-  `Pandas_PyArrow_Write` lands on par with raw `PyArrow_Write`.
-- **fastparquet is ~1.75× slower to write and ~2.5× slower to read** than
+- **Polars is the outlier on its own files** — ~3× faster than everything
+  else in both directions. Its multithreaded Rust reader/writer and string
+  handling are simply a different class. But note the shared-file result:
+  the reference file is one big row group, and polars drops to 246 ms there
+  (vs 44 ms on its own multi-row-group file) — parallel readers need
+  multiple row groups to use more than one core.
+- **pandas ≈ pyarrow on read** (133 vs 128 ms): the Arrow→DataFrame
+  conversion is nearly free next to decode. On write, pandas' df→Arrow
+  conversion is likewise not the bottleneck — string encoding dominates.
+- **fastparquet is ~1.7× slower to write and ~2.5× slower to read** than
   the pyarrow engine on this string-heavy profile. Its niche (no Arrow
-  dependency, numba-based) isn't performance at this scale.
-- **duckdb's `fetchall()` costs 7.4×** — that is the price of turning 1M
+  dependency) isn't performance at this scale.
+- **duckdb's `fetchall()` costs 7×** — that is the price of turning 1M
   rows × 10 columns into 10M Python objects, not the price of reading
-  parquet (the engine-level scan is at the front of the pack). Cross-check
-  with the C# suite: the comparable materializing path there
-  (`DuckDb_AdoNet_ReadDecode`, 953 ms into C# POCOs) lands right next to
-  this one (996 ms into Python tuples) — the two suites' methodologies agree.
-- **Don't compare across languages except where the materialization matches**
-  (as above). Polars' 45 ms reads land in a polars DataFrame with its own
-  string pool; the C# 890 ms reads land in 1M heap-allocated POCO objects —
-  different work, different runtimes, different GCs. Compare engines within
-  a suite; compare suites only on shape.
+  parquet. The matched C# comparison (same file, same engine, 1M POCOs)
+  lands at 1,157 ms vs 1,075 ms here: **a dead heat, not "Python is
+  faster"** — see the shared-file section above.
+- **Don't compare across languages except where the materialization
+  matches** (as above). Polars' 44 ms reads land in a polars DataFrame
+  with its own string pool; C# reads land in 1M heap-allocated POCO
+  objects — different work, different runtimes, different GCs. Compare
+  engines within a suite; compare suites only on shape.
 
 ## Reading parquet directly from S3 with duckdb (httpfs)
 
