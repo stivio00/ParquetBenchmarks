@@ -3,20 +3,35 @@
 Six libraries and access layers, twelve benchmark methods, one fixed dataset:
 1,000,000 rows × 10 columns, BenchmarkDotNet + `[MemoryDiagnoser]` on .NET 10.
 
-| # | Library (pinned version) | API exercised | Read | Write |
-|---|---|---|:---:|:---:|
-| 1 | Parquet.Net 6.1.0 | `ParquetSerializer` — POCO (de)serialization | ✅ | ✅ |
-| 2 | ParquetSharp 24.0.0 | low-level column writer/reader | ✅ | ✅ |
-| 3 | ParquetSharp.Arrow 24.0.0 | `RecordBatch` interop with Apache.Arrow | ✅ | ✅ |
-| 4 | DuckDB.NET (ADO.NET) | `read_parquet` / `Appender` + `COPY` | ✅ | ✅ |
-| 5 | Dapper 2.1.79 | `Query<T>` hydration over DuckDB | ✅ | — |
-| 6 | DuckDB.EFCoreProvider 1.24.0 | LINQ / `FromParquet` / `SaveChanges` / `BulkInsert` | ✅ | ✅ (two paths) |
+| # | Library (pinned version) | API exercised | Read | Write | Direct S3 |
+|---|---|---|:---:|:---:|:---:|
+| 1 | Parquet.Net 6.1.0 | `ParquetSerializer` — POCO (de)serialization | ✅ | ✅ | — |
+| 2 | ParquetSharp 24.0.0 | low-level column writer/reader | ✅ | ✅ | — |
+| 3 | ParquetSharp.Arrow 24.0.0 | `RecordBatch` interop with Apache.Arrow | ✅ | ✅ | — |
+| 4 | DuckDB.NET (ADO.NET) | `read_parquet` / `Appender` + `COPY` | ✅ | ✅ | ✅ `httpfs` |
+| 5 | Dapper 2.1.79 | `Query<T>` hydration over DuckDB | ✅ | — | ✅ `httpfs` |
+| 6 | DuckDB.EFCoreProvider 1.24.0 | LINQ / `FromParquet` / `SaveChanges` / `BulkInsert` | ✅ | ✅ (two paths) | ✅ `httpfs` |
+
+All three DuckDB access layers sit on the same native engine, which can read
+**and write** parquet files directly on S3/GCS/Azure via its `httpfs`
+extension — no download step and no .NET I/O code, with projection and filter
+pushdown into the object store. The managed libraries need a `Stream` (see
+[docs/streams-and-s3.md](docs/streams-and-s3.md) for both patterns).
 
 Further docs:
 
 - [docs/libraries.md](docs/libraries.md) — how to use each API for read and write, with pros and cons
 - [docs/interpretation.md](docs/interpretation.md) — what the measured numbers actually mean
-- [docs/streams-and-s3.md](docs/streams-and-s3.md) — MemoryStream/stream support per library, and reading parquet from S3 (AWS SDK vs DuckDB's native remote reader)
+- [docs/streams-and-s3.md](docs/streams-and-s3.md) — MemoryStream/stream support per library, and reading parquet from S3 (AWS SDK vs DuckDB's native `httpfs` reader)
+- [python/README.md](python/README.md) — the same benchmark design implemented in Python (polars, pandas, pyarrow, fastparquet, duckdb)
+
+## Python sibling benchmarks
+
+`python/` contains a [uv](https://docs.astral.sh/uv/) project with the same
+benchmark design implemented against the Python ecosystem: polars, pandas
+(pyarrow + fastparquet engines), pyarrow directly, and duckdb. Same dataset
+shape, same read/write structure, same Snappy pinning — see
+[python/README.md](python/README.md).
 
 ## How the benchmarks are constructed
 
